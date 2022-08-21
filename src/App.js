@@ -1,6 +1,7 @@
 import ProductListPage from "./ProductListPage.js";
 import ProductDetailPage from "./ProductDetailPage.js";
 import CartPage from "./CartPage.js";
+import { init } from "./router.js";
 
 export default function App({ $target }) {
   //route() 함수임
@@ -16,7 +17,7 @@ export default function App({ $target }) {
       new ProductListPage({
         $target
       }).render();
-    } else if (pathname.indexOf('/index.html/products/') === 0) {
+    } else if (pathname.indexOf('/products/') === 0) {
       const [, , productId] = pathname.split('/');
       new ProductDetailPage({
         $target,
@@ -29,5 +30,8 @@ export default function App({ $target }) {
     }
   }
 
+  init(this.route);
   this.route();
+
+  window.addEventListener('popstate', this.route);
 }
