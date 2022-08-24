@@ -11,17 +11,18 @@ export default function ProductListPage({ $target }) {
 
   this.setState = (nextState) => {
     this.state = nextState
+    this.render();
   }
 
   const fetchProducts = async () => {
     const products = await request('/products');
     this.setState(products);
+    
+      const productList = new ProductList({
+        $target: $page,
+        initState: this.state
+    });
   }
-
-  const produntList = new ProductList({
-    $target: $page,
-    initState: this.state
-  })
 
   fetchProducts();
 

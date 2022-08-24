@@ -1,4 +1,4 @@
-import SelectedOptions from "./SelectedOptions.js";
+import SelectedOptions from './SelectedOptions.js';
 
 export default function ProductDetail({ $target, initState }) {
     const $productDetail = document.createElement('div');
@@ -16,6 +16,7 @@ export default function ProductDetail({ $target, initState }) {
 
         if (selectedOptions) {
             selectedOptions.setState({
+                ...this.state,
                 selectedOptions: this.state.selectedOptions
             });
         }
@@ -67,6 +68,7 @@ export default function ProductDetail({ $target, initState }) {
                     {
                         productId: product.id,
                         optionId: option.id,
+                        optionName: option.name,
                         optionPrice: option.price,
                         quantity: 1
                     }

@@ -24,7 +24,7 @@ export default function CartPage({ $target }) {
   this.render = () => {
     if (cartData.length === 0) {
       alert('장바구니가 비어있습니다.')
-      routeChange('/');
+      routeChange('/web/');
     } else {
       $target.appendChild($page);
       if (this.state.products && !cartComponent) {

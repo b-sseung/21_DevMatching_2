@@ -29,7 +29,7 @@ export default function ProductDetailPage({ $target, productId }) {
         $target: $page,
         initState: {
           product: this.state.product,
-          selectedOption: []
+          selectedOptions: []
         }
       })
     }
@@ -38,8 +38,7 @@ export default function ProductDetailPage({ $target, productId }) {
   this.fetchProduct = async () => {
     const { productId } = this.state;
     const product = await request(`/products/${productId}`);
-    
-    this.state({
+    this.setState({
       ...this.state,
       product
     });

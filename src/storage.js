@@ -1,9 +1,9 @@
-export const storage = localStorage;
+const storage = localStorage;
 
 export const getItem = (key, defaultValue) => {
   try {
     const value = storage.getItem(key);
-    return value ? JSONparse(value) : defaultValue
+    return value ? JSON.parse(value) : defaultValue
   } catch {
     return defaultValue
   }

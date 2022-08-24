@@ -1,5 +1,5 @@
 import { getItem, setItem } from './storage.js';
-import {routeChange } from './router.js';
+import { routeChange } from './router.js';
 
 export default function SelectedOptions({ $target, initState }) {
   const $component = document.createElement('div');
@@ -23,7 +23,6 @@ export default function SelectedOptions({ $target, initState }) {
 
   this.render = () => {
     const { product, selectedOptions = [] } = this.state;
-
     if (product && selectedOptions) {
       $component.innerHTML = `
         <h3>선택된 상품</h3>
@@ -51,11 +50,12 @@ export default function SelectedOptions({ $target, initState }) {
         productId: selectedOption.productId,
         optionId: selectedOption.optionId,
         quantity: selectedOption.quantity
-      }))))
+      }))));
       
-      routeChange('/cart');
+      routeChange('/web/cart');
     }
   })
+
   $component.addEventListener('change', e => {
     if (e.target.tagName === 'INPUT') {
       try {

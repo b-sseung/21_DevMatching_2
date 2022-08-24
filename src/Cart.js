@@ -1,5 +1,5 @@
-import { routeChange } from "./router";
-import { removeItem } from "./storage";
+import { routeChange } from './router.js';
+import { removeItem } from './storage.js';
 
 export default function Cart({ $target, initState }) {
   const $component = document.createElement('div');
@@ -43,10 +43,10 @@ export default function Cart({ $target, initState }) {
   this.render();
 
   $component.addEventListener('click', e => {
-    if (e.target.classNmae === 'OrderButton') {
+      if (e.target.className === 'OrderButton') {
       alert('주문 되었습니다!');
       removeItem('products_cart');
-      routeChange('/');
+      routeChange('/web/');
     }
   })
 }

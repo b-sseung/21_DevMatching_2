@@ -15,9 +15,9 @@ export default function ProductList({ $target, initState }) {
     if (!this.state) return;
 
     $productList.innerHTML = `
-      ${this.state.map((product) => {
-        `<li class="Product">
-          <a href="/products/${product.id}">
+      ${this.state.map((product) => 
+        `<li class="Product" data-product-id="${product.id}">
+          <a href="/web/products/${product.id}">
             <img src="${product.imageUrl}">
             <div class="Product__info">
               <div>${product.name}</div>
@@ -26,14 +26,17 @@ export default function ProductList({ $target, initState }) {
           </a>
         </li>
         `
-      })}
+      ).join('')}
     `
   }
+
+  this.render();
 
   $productList.addEventListener('click', (e) => {
     const $li = e.target.closest('li');
     const { productId } = $li.dataset;
 
-    if (productId) routeChange(`/products/${productId}`);
+    if (productId) routeChange(`/web/products/${productId}`);
   });
+
 }
